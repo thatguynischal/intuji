@@ -20,7 +20,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Paths */
+    "baseUrl": "./src", // Set the base directory for absolute imports
+    "paths": {
+      "@/*": ["./*"] // Map '@/*' to everything under the 'src' directory
+    }
   },
   "include": ["src"]
 }

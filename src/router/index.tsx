@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-const Dashboard = lazy(() => import('../modules/dashboard/views'));
+const Dashboard = lazy(() => import('@/modules/dashboard/views'));
 
-const routes = [{ path: '/dashboard', component: Dashboard }];
+const routes = [{ path: '/', component: Dashboard }];
 
 export const Router = () => {
   return (
