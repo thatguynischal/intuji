@@ -2,9 +2,13 @@ import { useState } from 'react';
 import reactLogo from '../../../assets/images/react.svg';
 import viteLogo from '/vite.svg';
 import '../../../App.css';
+import { useGetCatQuery } from '@/services/api/catsApi';
 
 function App() {
   const [count, setCount] = useState(0);
+  const { data, error, isLoading } = useGetCatQuery({});
+  console.log(data, error, isLoading);
+
   return (
     <>
       <div>
