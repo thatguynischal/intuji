@@ -24,6 +24,31 @@ This document defines the standard guidelines and best practices for React front
 
 ## Project Setup
 
+### Running the Project
+
+You can run the project using one of the following methods:
+
+1. **Using npm**  
+   Run the development server locally with the following command:
+
+   ```bash
+   npm run dev
+   ```
+
+   Ensure all dependencies are installed beforehand with:
+
+   ```bash
+   npm install
+   ```
+
+2. **Using Docker**  
+   Build and run the project using Docker:
+   ```bash
+   docker build -t react-frontend .
+   docker run -p 3000:3000 react-frontend
+   ```
+   Replace `react-frontend` with your desired image name.
+
 ### Tooling
 
 1. **Husky**
@@ -57,31 +82,6 @@ This document defines the standard guidelines and best practices for React front
 ---
 
 ### Folder Structure
-
-### Running the Project
-
-You can run the project using one of the following methods:
-
-1. **Using npm**  
-   Run the development server locally with the following command:
-
-   ```bash
-   npm run dev
-   ```
-
-   Ensure all dependencies are installed beforehand with:
-
-   ```bash
-   npm install
-   ```
-
-2. **Using Docker**  
-   Build and run the project using Docker:
-   ```bash
-   docker build -t react-frontend .
-   docker run -p 3000:3000 react-frontend
-   ```
-   Replace `react-frontend` with your desired image name.
 
 #### **Absolute Imports**
 
