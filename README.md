@@ -3,26 +3,118 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Project Setup](#project-setup)
+2. [Quick Start](#quick-start)
+   - [Prerequisites](#prerequisites)
+   - [Using Docker (Recommended)](#using-docker-recommended)
+   - [Without Docker](#without-docker)
+3. [Project Structure](#project-structure)
+   - [Folder Structure](#folder-structure)
+   - [Absolute Imports](#absolute-imports)
+4. [Development Setup](#development-setup)
    - [Tooling](#tooling)
    - [Dependencies](#dependencies)
-   - [Folder Structure](#folder-structure)
-3. [Code Style & Conventions](#code-style--conventions)
+5. [Code Style & Conventions](#code-style--conventions)
    - [JSX and React Components](#jsx-and-react-components)
    - [State Management](#state-management)
    - [Component Design](#component-design)
    - [Naming Conventions](#naming-conventions)
-4. [License](#license)
-
----
+6. [License](#license)
 
 ## Introduction
 
-This document defines the standard guidelines and best practices for React frontend projects. The goal is to maintain consistency, scalability, and maintainability across all development efforts. This standardization ensures high-quality code, a well-organized structure, and seamless collaboration among team members.
+This is a standardized React frontend template that follows best practices and modern development workflows. It comes with Docker support, comprehensive tooling, and established coding conventions to ensure high-quality, maintainable code.
 
----
+## Quick Start
 
-## Project Setup
+### Prerequisites
+
+- Node.js 18 or higher
+- npm or yarn
+- Docker and Docker Compose (for containerized development)
+
+### Using Docker (Recommended)
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd <project-directory>
+   ```
+
+2. **Build and Run using Docker Compose**
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   This will:
+
+   - Build the Docker image
+   - Start the container
+   - Run the development server at http://localhost:5173
+
+3. **Stop the Container**
+   ```bash
+   docker-compose down
+   ```
+
+#### Development Features
+
+- Hot reload enabled with volume mounting
+- Node modules are persisted in a Docker volume
+- Environment configured for development
+- Automatic container restart unless manually stopped
+
+### Without Docker
+
+1. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   Access the application at http://localhost:5173
+
+## Project Structure
+
+### Folder Structure
+
+#### **Modular Approach**
+
+- Each feature or section lives in its own folder for better organization.
+- Example folder structure:
+  ```
+  src/
+  ├── modules/
+  │   └── FeatureName/
+  │       ├── partials/ (shared components)
+  │       ├── router/ (module-based routing)
+  │       ├── utils/ (utilities for the module)
+  │       ├── views/ (module-specific pages)
+  │       └── tests/ (optional)
+  ├── services/ (feature-specific actions, reducers, slices)
+  ```
+
+### Absolute Imports
+
+- Configure `jsconfig.json` or `tsconfig.json` for absolute imports to avoid relative path hell.
+- Example configuration:
+  ```json
+  {
+    "compilerOptions": {
+      "baseUrl": "src",
+      "paths": {
+        "@/*": ["*"]
+      }
+    }
+  }
+  ```
+
+## Development Setup
 
 ### Tooling
 
@@ -45,65 +137,12 @@ This document defines the standard guidelines and best practices for React front
    - Automatically format code for consistency.
    - Integrate Prettier with ESLint to avoid conflicts.
 
----
-
 ### Dependencies
 
 - **React**: Use version 18.x or the latest stable release.
 - **Redux Toolkit**: Preferred for state management. Avoid directly using Redux without the Toolkit.
 - **React Router DOM**: For handling navigation.
 - Install additional dependencies like Axios or React Query based on project requirements.
-
----
-
-### Folder Structure
-
-### Running the Project
-
-You can run the project using one of the following methods:
-
-1. **Using npm**  
-   Run the development server locally with the following command:
-
-   ```bash
-   npm run dev
-   ```
-
-   Ensure all dependencies are installed beforehand with:
-
-   ```bash
-   npm install
-   ```
-
-2. **Using Docker**  
-   Build and run the project using Docker:
-   ```bash
-   docker build -t react-frontend .
-   docker run -p 3000:3000 react-frontend
-   ```
-   Replace `react-frontend` with your desired image name.
-
-#### **Absolute Imports**
-
-- Configure `jsconfig.json` or `tsconfig.json` for absolute imports to avoid relative path hell.
-
-#### **Modular Approach**
-
-- Each feature or section lives in its own folder for better organization.
-- Example folder structure:
-  ```
-  src/
-  ├── modules/
-  │   └── FeatureName/
-  │       ├── partials/ (shared components)
-  │       ├── router/ (module-based routing)
-  │       ├── utils/ (utilities for the module)
-  │       ├── views/ (module-specific pages)
-  │       └── tests/ (optional)
-  ├── services/ (feature-specific actions, reducers, slices)
-  ```
-
----
 
 ## Code Style & Conventions
 
@@ -115,14 +154,10 @@ You can run the project using one of the following methods:
 - Use **PropTypes** or **TypeScript** for type-checking.
 - Ensure all rendered lists have a unique `key` prop.
 
----
-
 ### State Management
 
 - Use **Redux Toolkit** for application-level state management.
 - Organize state using `createSlice` for modular and maintainable state logic.
-
----
 
 ### Component Design
 
@@ -130,8 +165,6 @@ You can run the project using one of the following methods:
 - Separate presentation and logic:
   - **Presentational Components**: Handle UI rendering.
   - **Container Components**: Handle logic and state.
-
----
 
 ### Naming Conventions
 
@@ -189,10 +222,6 @@ You can run the project using one of the following methods:
 - Boolean variables: Use prefixes like `is`, `has`, or `can`.  
   Example: `isActive`, `hasPermission`.
 
----
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
----

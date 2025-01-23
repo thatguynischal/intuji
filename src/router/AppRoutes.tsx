@@ -36,8 +36,8 @@ export default function AppRoutes() {
 
           return <Route key={path} path={path} element={<Component />} />;
         })}
-        <Route path="/404" element={<NoPage />} />
-        <Route path="*" element={<Navigate to="/404" />} />
+        <Route path="/dashboard" element={<NoPage />} />
+        <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
     </Suspense>
   );
