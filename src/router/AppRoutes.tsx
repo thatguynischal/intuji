@@ -7,7 +7,7 @@ import { useAppSelector } from '@/app/hooks';
 import { RootState } from '@/app/store';
 
 export default function AppRoutes() {
-  const isAuthenticated = useAppSelector((state: RootState) => Boolean(state?.auth?.user?.token));
+  const isAuthenticated = useAppSelector((state: RootState) => Boolean(state?.auth?.token));
 
   // Combine all routes
   const allRoutes = [...dashboardRoutes];
