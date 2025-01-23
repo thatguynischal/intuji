@@ -169,8 +169,6 @@ You can run the project using one of the following methods:
 - **React Router DOM**: For handling navigation.
 - Install additional dependencies like Axios or React Query based on project requirements.
 
-# <<<<<<< HEAD
-
 ---
 
 ### Folder Structure
@@ -196,8 +194,6 @@ You can run the project using one of the following methods:
   ```
 
 ---
-
-> > > > > > > b86b8cc7f3bdc255f4107c5b17e2413e87567c2e
 
 ## Code Style & Conventions
 
