@@ -20,43 +20,19 @@
    - [✍️ Naming Conventions](#naming-conventions)
 6. [📄 License] (#license)
 
-<<<<<<< HEAD
-
 ## 🎯 Introduction
-
-=======
-
-## 🚀 Introduction
-
-> > > > > > > 506afeb0a0b8accf19ad2da4430b07ab27576681
 
 This is a standardized React frontend template that follows best practices and modern development workflows. It comes with Docker support, comprehensive tooling, and established coding conventions to ensure high-quality, maintainable code.
 
 ## ⚡ Quick Start
 
-<<<<<<< HEAD
-
 ### 📝 Prerequisites
-
-=======
-
-### 📋 Prerequisites
-
-> > > > > > > 506afeb0a0b8accf19ad2da4430b07ab27576681
 
 - Node.js 18 or higher
 - npm or yarn
 - Docker and Docker Compose (for containerized development)
 
-<<<<<<< HEAD
-
 ### 🐳 Using Docker (Recommended)
-
-=======
-
-### 🛠️ Using Docker (Recommended)
-
-> > > > > > > 506afeb0a0b8accf19ad2da4430b07ab27576681
 
 1. **Clone the repository**
 
@@ -103,15 +79,7 @@ This is a standardized React frontend template that follows best practices and m
    ```
    Access the application at http://localhost:5173
 
-<<<<<<< HEAD
-
 ## 📁 Project Structure
-
-=======
-
-## 🏗️ Project Structure
-
-> > > > > > > 506afeb0a0b8accf19ad2da4430b07ab27576681
 
 ### 🗂️ Folder Structure
 
@@ -339,8 +307,6 @@ const userData = async () => { ... }; // Wrong: Function name should be a verb
 const total = (i: Item[]) => { ... }; // Wrong: Unclear purpose
 ```
 
-<<<<<<< HEAD
-
 #### 🎯 CSS Class Names
 
 ✅ **Good Examples**:
@@ -442,12 +408,6 @@ VITE_APP_ENV=development
 5. Open a Pull Request
 
 ## 📄 License
-
-=======
-
-## 📝 License
-
-> > > > > > > 506afeb0a0b8accf19ad2da4430b07ab27576681
 
 This project is licensed under the [MIT License](LICENSE).
 
