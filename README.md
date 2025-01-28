@@ -1,38 +1,38 @@
-# Frontend React Project Standardization
+# 🚀 Frontend React Project Standardization
 
-## Table of Contents
+## 📋 Table of Contents
 
-1. [Introduction](#introduction)
-2. [Quick Start](#quick-start)
-   - [Prerequisites](#prerequisites)
-   - [Using Docker (Recommended)](#using-docker-recommended)
-   - [Without Docker](#without-docker)
-3. [Project Structure](#project-structure)
-   - [Folder Structure](#folder-structure)
-   - [Absolute Imports](#absolute-imports)
-4. [Development Setup](#development-setup)
-   - [Tooling](#tooling)
-   - [Dependencies](#dependencies)
-5. [Code Style & Conventions](#code-style--conventions)
-   - [JSX and React Components](#jsx-and-react-components)
-   - [State Management](#state-management)
-   - [Component Design](#component-design)
-   - [Naming Conventions](#naming-conventions)
-6. [License](#license)
+1. [🎯 Introduction](#-introduction)
+2. [⚡ Quick Start](#-quick-start)
+   - [📝 Prerequisites](#-prerequisites)
+   - [🐳 Using Docker (Recommended)](#-using-docker-recommended)
+   - [💻 Without Docker](#-without-docker)
+3. [📁 Project Structure](#-project-structure)
+   - [🗂️ Folder Structure](#️-folder-structure)
+   - [🔗 Absolute Imports](#-absolute-imports)
+4. [⚙️ Development Setup](#️-development-setup)
+   - [🛠️ Tooling](#tooling)
+   - [📦 Dependencies](#dependencies)
+5. [📝 Code Style & Conventions](#-code-style--conventions)
+   - [⚛️ JSX and React Components](#jsx-and-react-components)
+   - [💾 State Management](#state-management)
+   - [🎨 Component Design](#component-design)
+   - [✍️ Naming Conventions](#naming-conventions)
+6. [📄 License](#license)
 
-## Introduction
+## 🎯 Introduction
 
 This is a standardized React frontend template that follows best practices and modern development workflows. It comes with Docker support, comprehensive tooling, and established coding conventions to ensure high-quality, maintainable code.
 
-## Quick Start
+## ⚡ Quick Start
 
-### Prerequisites
+### 📝 Prerequisites
 
 - Node.js 18 or higher
 - npm or yarn
 - Docker and Docker Compose (for containerized development)
 
-### Using Docker (Recommended)
+### 🐳 Using Docker (Recommended)
 
 1. **Clone the repository**
 
@@ -58,14 +58,14 @@ This is a standardized React frontend template that follows best practices and m
    docker-compose down
    ```
 
-#### Development Features
+#### 🔥 Development Features
 
 - Hot reload enabled with volume mounting
 - Node modules are persisted in a Docker volume
 - Environment configured for development
 - Automatic container restart unless manually stopped
 
-### Without Docker
+### 💻 Without Docker
 
 1. **Install dependencies**
 
@@ -79,11 +79,11 @@ This is a standardized React frontend template that follows best practices and m
    ```
    Access the application at http://localhost:5173
 
-## Project Structure
+## 📁 Project Structure
 
-### Folder Structure
+### 🗂️ Folder Structure
 
-#### **Modular Approach**
+#### 📁 Modular Approach
 
 - Each feature or section lives in its own folder for better organization.
 - Example folder structure:
@@ -99,7 +99,7 @@ This is a standardized React frontend template that follows best practices and m
   ├── services/ (feature-specific actions, reducers, slices)
   ```
 
-### Absolute Imports
+### 🔗 Absolute Imports
 
 - Configure `jsconfig.json` or `tsconfig.json` for absolute imports to avoid relative path hell.
 - Example configuration:
@@ -114,9 +114,9 @@ This is a standardized React frontend template that follows best practices and m
   }
   ```
 
-## Development Setup
+## ⚙️ Development Setup
 
-### Running the Project
+### 🛠️ Running the Project
 
 You can run the project using one of the following methods:
 
@@ -141,7 +141,7 @@ You can run the project using one of the following methods:
    ```
    Replace `react-frontend` with your desired image name.
 
-### Tooling
+### 🔧 Tooling
 
 1. **Husky**
 
@@ -162,7 +162,7 @@ You can run the project using one of the following methods:
    - Automatically format code for consistency.
    - Integrate Prettier with ESLint to avoid conflicts.
 
-### Dependencies
+### 📦 Dependencies
 
 - **React**: Use version 18.x or the latest stable release.
 - **Redux Toolkit**: Preferred for state management. Avoid directly using Redux without the Toolkit.
@@ -171,13 +171,13 @@ You can run the project using one of the following methods:
 
 ---
 
-### Folder Structure
+### 📁 Folder Structure
 
-#### **Absolute Imports**
+#### 🔗 Absolute Imports
 
 - Configure `jsconfig.json` or `tsconfig.json` for absolute imports to avoid relative path hell.
 
-#### **Modular Approach**
+#### 📁 Modular Approach
 
 - Each feature or section lives in its own folder for better organization.
 - Example folder structure:
@@ -195,9 +195,9 @@ You can run the project using one of the following methods:
 
 ---
 
-## Code Style & Conventions
+## 📝 Code Style & Conventions
 
-### JSX and React Components
+### ⚛️ JSX and React Components
 
 - Use **functional components** and hooks; avoid class components.
 - Destructure props and state for cleaner code.
@@ -205,74 +205,215 @@ You can run the project using one of the following methods:
 - Use **PropTypes** or **TypeScript** for type-checking.
 - Ensure all rendered lists have a unique `key` prop.
 
-### State Management
+### 💾 State Management
 
 - Use **Redux Toolkit** for application-level state management.
 - Organize state using `createSlice` for modular and maintainable state logic.
 
-### Component Design
+### 🎨 Component Design
 
 - Keep components **small, reusable, and single-purpose**.
 - Separate presentation and logic:
   - **Presentational Components**: Handle UI rendering.
   - **Container Components**: Handle logic and state.
 
-### Naming Conventions
+### ✍️ Naming Conventions
 
-#### File and Folder Names
+Here are our naming conventions with examples of good and bad practices:
 
-- **Components**: Use PascalCase.  
-  Example: `MyComponent.tsx`
-- **Utilities/Helpers**: Use camelCase.  
-  Example: `apiService.ts`
-- **Tests**: Use PascalCase with `.test.js` or `.spec.js` suffix.  
-  Example: `MyComponent.test.js`
+#### 📂 File and Folder Names
 
-#### Variables and Functions
+✅ **Good Examples**:
 
-- Use camelCase: `handleClick`, `fetchData`.
-- Event handlers: Prefix with "handle" or "on".  
-  Example: `handleSubmit()`, `onClick()`.
+```
+src/
+├── components/
+│   ├── UserProfile.tsx
+│   └── NavigationBar.tsx
+├── utils/
+│   ├── formatDate.ts
+│   └── apiService.ts
+└── tests/
+    └── UserProfile.test.tsx
+```
 
-#### Constants
+❌ **Bad Examples**:
 
-- Use UPPERCASE with underscores: `MAX_COUNT`, `DEFAULT_THEME`.
+```
+src/
+├── components/
+│   ├── userprofile.tsx      // Wrong: Use PascalCase for components
+│   └── navigation_bar.tsx   // Wrong: Use PascalCase for components
+├── Utils/                   // Wrong: Use lowercase for folders
+│   ├── FormatDate.ts       // Wrong: Use camelCase for utilities
+│   └── API_service.ts      // Wrong: Inconsistent naming
+└── tests/
+    └── userprofile.spec.tsx // Wrong: Use PascalCase for test files
+```
 
-#### Environment Variables
+#### 🔄 Component Names and Props
 
-- UPPERCASE with underscores: `REACT_APP_API_URL`.
+✅ **Good Examples**:
 
-#### React Components
+```tsx
+// Component naming
+const UserProfile: React.FC<UserProfileProps> = ({ userName, onUpdate }) => { ... }
+const NavigationBar: React.FC<NavProps> = ({ items, onSelect }) => { ... }
 
-- Use PascalCase for component names.  
-  Example: `Header.ts`, `UserProfile.ts`.
+// Usage
+<UserProfile userName="John" onUpdate={handleUpdate} />
+<NavigationBar items={navItems} onSelect={handleSelect} />
+```
 
-#### Props
+❌ **Bad Examples**:
 
-- Use camelCase for props.  
-  Example: `<MyComponent userName="John" onClick={handleClick} />`.
-- Event handlers: Prefix with "on".  
-  Example: `<MyComponent onSubmit={handleSubmit} />`.
+```tsx
+// Wrong: Inconsistent naming, unclear purpose
+const user_profile: React.FC = (props) => { ... }
+const Nav: React.FC = ({ i, clk }) => { ... }  // Wrong: Unclear prop names
 
-#### CSS Class Names
+// Wrong: Inconsistent prop naming
+<user_profile UserName="John" handle_update={updateFn} />
+<Nav ITEMS={navItems} on_select={selectFn} />
+```
 
-- Use kebab-case for traditional CSS: `.button-primary`.
-- For CSS Modules, use camelCase or PascalCase depending on context: `styles.buttonPrimary`.
+#### 🔤 Variables and Functions
 
-#### Hooks
+✅ **Good Examples**:
 
-- Prefix with "use": `useAuth`, `useFetchData`.
+```tsx
+// Variables
+const isUserLoggedIn = true;
+const maxRetryAttempts = 3;
+const userProfileData = { ... };
 
-#### Context
+// Functions
+const handleSubmit = () => { ... };
+const fetchUserData = async () => { ... };
+const calculateTotalPrice = (items: Item[]) => { ... };
+```
 
-- Use PascalCase: `UserContext`, `ThemeContext`.
+❌ **Bad Examples**:
 
-#### General Guidelines
+```tsx
+// Wrong: Inconsistent naming, unclear purpose
+const logged = true;              // Wrong: Unclear boolean naming
+const MAX = 3;                    // Wrong: Unclear purpose
+const data = { ... };            // Wrong: Too generic
 
-- Avoid abbreviations unless widely recognized (e.g., `Button` instead of `Btn`).
-- Boolean variables: Use prefixes like `is`, `has`, or `can`.  
-  Example: `isActive`, `hasPermission`.
+// Wrong: Inconsistent verb usage, unclear purpose
+const submit = () => { ... };     // Wrong: Use handle prefix for event handlers
+const userData = async () => { ... }; // Wrong: Function name should be a verb
+const total = (i: Item[]) => { ... }; // Wrong: Unclear purpose
+```
 
-## License
+#### 🎯 CSS Class Names
+
+✅ **Good Examples**:
+
+```css
+/* Traditional CSS */
+.button-primary { ... }
+.user-profile-container { ... }
+.nav-item-active { ... }
+
+/* CSS Modules */
+.buttonPrimary { ... }
+.userProfileContainer { ... }
+.navItemActive { ... }
+```
+
+❌ **Bad Examples**:
+
+```css
+/* Wrong: Inconsistent naming, unclear purpose */
+.btn { ... }                /* Wrong: Too short/unclear */
+.UserProfile { ... }        /* Wrong: PascalCase in CSS */
+.nav_item_active { ... }    /* Wrong: Using underscores */
+
+/* Wrong: Unclear purpose, poor naming */
+.x { ... }                  /* Wrong: Non-descriptive */
+.red { ... }               /* Wrong: Named by appearance not purpose */
+.style1 { ... }            /* Wrong: Generic naming */
+```
+
+#### 🪝 Custom Hooks
+
+✅ **Good Examples**:
+
+```tsx
+const useWindowSize = () => { ... };
+const useUserAuthentication = () => { ... };
+const useFetchData = (url: string) => { ... };
+```
+
+❌ **Bad Examples**:
+
+```tsx
+// Wrong: Missing 'use' prefix, unclear purpose
+const windowSize = () => { ... };     // Wrong: Missing 'use' prefix
+const auth = () => { ... };           // Wrong: Too short, missing 'use' prefix
+const useData = () => { ... };        // Wrong: Too generic
+```
+
+#### 🔠 Constants
+
+✅ **Good Examples**:
+
+```tsx
+const MAX_RETRY_ATTEMPTS = 3;
+const DEFAULT_USER_SETTINGS = { ... };
+const API_ENDPOINTS = {
+  USER_PROFILE: '/api/user',
+  AUTHENTICATION: '/api/auth'
+};
+```
+
+❌ **Bad Examples**:
+
+```tsx
+// Wrong: Inconsistent naming, poor conventions
+const MaxRetry = 3;                // Wrong: Should use UPPER_CASE
+const defaultSettings = { ... };    // Wrong: Should use UPPER_CASE
+const apiUrls = {                  // Wrong: Should use UPPER_CASE
+  profile: '/api/user',            // Wrong: Inconsistent naming
+  AUTH: '/api/auth'                // Wrong: Mixing conventions
+};
+```
+
+## 🛠️ Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run tests
+- `npm run test:ui` - Run tests in UI mode
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## 🔒 Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_URL=your_api_url
+VITE_APP_ENV=development
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
