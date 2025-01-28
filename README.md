@@ -18,7 +18,7 @@
    - [💾 State Management](#state-management)
    - [🎨 Component Design](#component-design)
    - [✍️ Naming Conventions](#naming-conventions)
-6. [📄 License](#license)
+6. [📄 License] (#license)
 
 ## 🎯 Introduction
 
