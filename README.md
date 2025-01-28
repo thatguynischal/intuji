@@ -20,19 +20,19 @@
    - [Naming Conventions](#naming-conventions)
 6. [License](#license)
 
-## Introduction
+## 🚀 Introduction
 
 This is a standardized React frontend template that follows best practices and modern development workflows. It comes with Docker support, comprehensive tooling, and established coding conventions to ensure high-quality, maintainable code.
 
 ## Quick Start
 
-### Prerequisites
+### 📋 Prerequisites
 
 - Node.js 18 or higher
 - npm or yarn
 - Docker and Docker Compose (for containerized development)
 
-### Using Docker (Recommended)
+### 🛠️ Using Docker (Recommended)
 
 1. **Clone the repository**
 
@@ -79,7 +79,7 @@ This is a standardized React frontend template that follows best practices and m
    ```
    Access the application at http://localhost:5173
 
-## Project Structure
+## 🏗️ Project Structure
 
 ### Folder Structure
 
@@ -273,6 +273,6 @@ You can run the project using one of the following methods:
 - Boolean variables: Use prefixes like `is`, `has`, or `can`.  
   Example: `isActive`, `hasPermission`.
 
-## License
+## 📝    License
 
 This project is licensed under the [MIT License](LICENSE).
