@@ -2,42 +2,48 @@ import { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import dashboardRoutes from '@/modules/dashboard/router';
 import PrivateRoute from './PrivateRoute';
-import NoPage from '@/views/PageNotFound'; // Shared 404 page
+import NoPage from '@/views/PageNotFound';
 import { useAppSelector } from '@/app/hooks';
 import { RootState } from '@/app/store';
 
+interface RouteConfig {
+  path: string;
+  component: React.ComponentType;
+  isPrivate: boolean;
+}
+
 export default function AppRoutes() {
   const isAuthenticated = useAppSelector((state: RootState) => Boolean(state?.auth?.token));
-
-  // Combine all routes
-  const allRoutes = [...dashboardRoutes];
+  const allRoutes: RouteConfig[] = [...dashboardRoutes];
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        {allRoutes.map(({ path, component: Component, isPrivate }) => {
-          if (isPrivate) {
-            return (
-              <Route
-                key={path}
-                path={path}
-                element={
-                  <PrivateRoute>
-                    <Component />
-                  </PrivateRoute>
-                }
-              />
-            );
-          }
+        {/* Public landing page */}
+        <Route
+          path="/"
+          element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Navigate to="/dashboard" replace />}
+        />
 
-          if (isAuthenticated && ['/login', '/'].includes(path)) {
-            return <Route key={path} path={path} element={<Navigate to="/dashboard" />} />;
-          }
+        {/* Map all defined routes */}
+        {allRoutes.map(({ path, component: Component, isPrivate }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              isPrivate ? (
+                <PrivateRoute>
+                  <Component />
+                </PrivateRoute>
+              ) : (
+                <Component />
+              )
+            }
+          />
+        ))}
 
-          return <Route key={path} path={path} element={<Component />} />;
-        })}
-        <Route path="/dashboard" element={<NoPage />} />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        {/* Catch-all route for 404 */}
+        <Route path="*" element={<NoPage />} />
       </Routes>
     </Suspense>
   );
