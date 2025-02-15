@@ -1,10 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authSlice from '@/services/features/authSlice';
+import playerSlice from '@/services/features/playerSlice';
 import { catsApi } from '@/services/api/catsApi';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, playerSlice)
 
 export const store = configureStore({
   reducer: {
-    auth: authSlice,
+    player: persistedReducer,
     [catsApi.reducerPath]: catsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -13,5 +22,6 @@ export const store = configureStore({
     }).concat(catsApi.middleware),
 });
 
+export const persistor = persistStore(store);
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

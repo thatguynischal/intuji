@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import dashboardRoutes from '@/modules/dashboard/router';
+import playerRoutes from '@/modules/player/router';
 import PrivateRoute from './PrivateRoute';
 import NoPage from '@/views/PageNotFound';
 import { useAppSelector } from '@/app/hooks';
@@ -14,7 +15,7 @@ interface RouteConfig {
 
 export default function AppRoutes() {
   const isAuthenticated = useAppSelector((state: RootState) => Boolean(state?.auth?.token));
-  const allRoutes: RouteConfig[] = [...dashboardRoutes];
+  const allRoutes: RouteConfig[] = [...dashboardRoutes, ...playerRoutes];
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
