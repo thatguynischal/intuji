@@ -3,11 +3,12 @@ import { Button, Container, Paper, Typography, Dialog, DialogTitle, DialogConten
 import AddIcon from '@mui/icons-material/Add';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useAppSelector, useAppDispatch } from '@/app/hooks';
+import { useAppDispatch } from '@/app/hooks';
 import { addPlayer, updatePlayer } from '@/services/features/playerSlice';
 import { FormInputText, FormRating } from '@/components';
 import NewPlayerValidations from '../../validations/NewPlayerValidations';
 import { Player } from '@/services/features/playerSlice';
+import { playerMockService } from '@/services/api/playerMockService';
 
 export default function AddEditPlayers({
   handleClose,
@@ -25,7 +26,6 @@ export default function AddEditPlayers({
     resolver: yupResolver(NewPlayerValidations),
     defaultValues: { name: '', rating: 0 },
   });
-  const players = useAppSelector((state) => state.player.players);
 
   useEffect(() => {
     reset(
@@ -35,11 +35,24 @@ export default function AddEditPlayers({
     );
   }, [open, type, existingPlayer, reset]);
 
-  const handleFormSubmission = (data: any) => {
-    if (type === 'add') dispatch(addPlayer({ ...data, id: players.length + 1 }));
-    else if (type === 'edit' && existingPlayer) dispatch(updatePlayer({ ...data, id: existingPlayer.id }));
-    reset();
-    handleClose();
+  const handleFormSubmission = async (data: any) => {
+    try {
+      if (type === 'add') {
+        // Simulate API call
+        const newPlayer = await playerMockService.addPlayer(data);
+        dispatch(addPlayer(newPlayer));
+      } else if (type === 'edit' && existingPlayer) {
+        // Simulate API call
+        const updatedPlayer = await playerMockService.updatePlayer({ ...data, id: existingPlayer.id });
+        dispatch(updatePlayer(updatedPlayer));
+      }
+      reset();
+      handleClose();
+    } catch (error) {
+      // Handle API errors
+      console.error('Player submission error:', error);
+      // Optionally show an error message to the user
+    }
   };
 
   return (
