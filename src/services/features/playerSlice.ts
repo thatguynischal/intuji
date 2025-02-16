@@ -32,7 +32,7 @@ const playerSlice = createSlice({
       state.stepsCount += 1;
     },
     stepsReset(state) {
-      state.stepsCount = 1;
+      state.stepsCount = 0;
     },
     stepsDecrement(state) {
       state.stepsCount -= 1;

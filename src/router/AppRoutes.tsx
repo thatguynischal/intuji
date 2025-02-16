@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import dashboardRoutes from '@/modules/dashboard/router';
-import playerRoutes from '@/modules/player/router';
 import PrivateRoute from './PrivateRoute';
 import NoPage from '@/views/PageNotFound';
 import { useAppSelector } from '@/app/hooks';
 import { RootState } from '@/app/store';
+import SharedResults from '../../public/Sharable';
 
 interface RouteConfig {
   path: string;
@@ -14,8 +14,9 @@ interface RouteConfig {
 }
 
 export default function AppRoutes() {
+  // @ts-expect-error
   const isAuthenticated = useAppSelector((state: RootState) => Boolean(state?.auth?.token));
-  const allRoutes: RouteConfig[] = [...dashboardRoutes, ...playerRoutes];
+  const allRoutes: RouteConfig[] = [...dashboardRoutes];
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -42,6 +43,9 @@ export default function AppRoutes() {
             }
           />
         ))}
+
+        {/* New public route for shared results */}
+        <Route path="/shared-results/:encodedTeams" element={<SharedResults />} />
 
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NoPage />} />

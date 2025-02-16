@@ -8,6 +8,7 @@ interface PrivateRouteProps {
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const location = useLocation();
+  // @ts-expect-error
   const isAuthenticated = useSelector((state: RootState) => Boolean(state?.auth?.token));
 
   if (!isAuthenticated) {

@@ -28,5 +28,5 @@
       "@/*": ["./*"] // Map '@/*' to everything under the 'src' directory
     }
   },
-  "include": ["src"]
+  "include": ["src", "public/Sharable/RenderTeams.tsx"]
 }

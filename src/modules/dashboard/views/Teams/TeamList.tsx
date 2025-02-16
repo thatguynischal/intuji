@@ -1,62 +1,56 @@
 import React, { useState, useMemo } from 'react';
-import { List, ListItem, Typography, IconButton, Box, Rating, Menu, MenuItem } from '@mui/material';
+import { List, ListItem, Typography, IconButton, Box, Menu, MenuItem } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useAppSelector, useAppDispatch } from '@/app/hooks';
-import { Player, removePlayer } from '@/services/features/playerSlice';
+import { removeTeam } from '@/services/features/teamSlice';
 import Dialog from '@/components/Dialog';
-import AddEditPlayers from './AddEditPlayers';
+import AddEditTeams from './AddEditTeams';
+import { Team } from '@/utils/globalTypes';
 
-interface PlayersListProps {
-  players?: Player[];
+interface TeamListProps {
+  teams?: Team[];
 }
 
-export default function PlayersList({ players: propPlayers }: PlayersListProps) {
-  const globalPlayers = useAppSelector((state) => state.player.players);
+export default function TeamList({ teams: propTeams }: TeamListProps) {
+  const globalTeams = useAppSelector((state) => state.team.teams);
   const dispatch = useAppDispatch();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
+  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
 
-  const displayPlayers = useMemo(() => propPlayers || globalPlayers, [propPlayers, globalPlayers]);
+  const displayTeams = useMemo(() => propTeams || globalTeams, [propTeams, globalTeams]);
 
-  const handleMoreClick = (event: React.MouseEvent<HTMLButtonElement>, player: Player) => {
+  const handleMoreClick = (event: React.MouseEvent<HTMLButtonElement>, team: Team) => {
     setAnchorEl(event.currentTarget);
-    setSelectedPlayer(player);
+    setSelectedTeam(team);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-    setSelectedPlayer(null);
+    setSelectedTeam(null);
   };
 
   const handleDelete = () => {
-    if (selectedPlayer) {
-      dispatch(removePlayer(selectedPlayer));
+    if (selectedTeam) {
+      dispatch(removeTeam(selectedTeam));
       handleClose();
       setDialogOpen(false);
     }
   };
 
   const confirmDelete = () => setDialogOpen(true);
-  const cancelDelete = () => {
-    setDialogOpen(false);
-    handleClose();
-  };
 
   const handleEditClose = () => {
     setOpenEdit(false);
     handleClose();
   };
 
-  const renderPlayerItem = (player: Player, index: number) => (
+  const renderTeamItem = (team: Team, index: number) => (
     <ListItem key={index} sx={{ borderBottom: '1px solid #eee', '&:last-child': { borderBottom: 'none' } }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-        <Typography variant="body1" sx={{ mx: 3 }}>{player.name}</Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center', mx: 3 }}>
-          <Rating value={player.rating} readOnly size="small" />
-        </Box>
-        <IconButton onClick={(e) => handleMoreClick(e, player)}>
+        <Typography variant="body1" sx={{ mx: 3 }}>{team.name}</Typography>
+        <IconButton onClick={(e) => handleMoreClick(e, team)}>
           <MoreVertIcon />
         </IconButton>
       </Box>
@@ -65,20 +59,22 @@ export default function PlayersList({ players: propPlayers }: PlayersListProps) 
 
   return (
     <List sx={{ width: '100%', maxWidth: 400, margin: 'auto' }}>
-      {displayPlayers.length > 0 ? (
-        displayPlayers.map(renderPlayerItem)
+      {displayTeams.length > 0 ? (
+        displayTeams.map(renderTeamItem)
       ) : (
         <Typography variant="body2" sx={{ textAlign: 'center', color: 'text.secondary' }}>
-          No players added yet
+          No teams added yet
         </Typography>
       )}
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={() => setOpenEdit(true)}>Edit</MenuItem>
         <MenuItem onClick={confirmDelete}>Delete</MenuItem>
       </Menu>
-      
-      <AddEditPlayers 
-        existingPlayer={selectedPlayer} 
+      <Dialog title="Delete Team" open={dialogOpen} handleClose={() => setDialogOpen(false)} onSuccess={handleDelete}>
+        Are you sure you want to delete {selectedTeam?.name}?
+      </Dialog>
+      <AddEditTeams 
+        existingTeam={selectedTeam} 
         handleClose={handleEditClose} 
         open={openEdit} 
         type="edit" 
